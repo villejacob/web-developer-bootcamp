@@ -1,0 +1,20 @@
+Section 2
+
+When going to a website, first create an HTTP request, sent to the website, their server determines what material I need, then they send me HTML, CSS, and JavaScript that my browser interprets.
+
+I only ever see HTML, CSS, and JS. This is front-end (client-side), all the logic (figuring out my login info, how to structure, what material is included) is the backend.
+
+Dynamic websites will change when a user does something (adds a review) vs a static webpage that will only update when the developer updates it.
+
+HTML: Hypertext Markup Language
+-"nouns" of a webpage
+	-Put it here, do this here, etc
+
+CSS: Cascading Style Sheets
+-Styles existing HTML
+-"Adjectives"
+	-Make this paragraph this color
+
+JavaScript
+-Adds logic and iteractivity
+-"Verbs"

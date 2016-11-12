@@ -1,0 +1,86 @@
+Section 3
+
+
+Boilerplate:
+
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Our metadata goes here -->
+	<title></title>
+</head>
+<body>
+
+	<!-- Our content goes here -->
+
+</body>
+</html>
+
+This is always the same.
+Shortcut: html -> tab
+
+head element contains everything you don't see on the page (links to fonts, style sheets, etc)
+
+Comments: <!-- -->
+Shortcut: cmd -> /
+
+Title is important because it contains what is going in the tab
+
+
+More body elements:
+MDN element reference: lists all elements
+
+Headers:
+Each one gets its own line
+
+strong to bold: but includes structure
+em to italicize: includes structure
+
+Lists: Elements inside have <li></li>
+Ordered <ol></ol>
+	1. This
+	2. Is
+	3. Ordered
+Unordered <ul></ul>
+	- This
+	- Has no
+	- Order
+
+Assignment: recreate notes in HTML
+
+Shortcut: type lorum tab to get lorum ipsum
+
+Divs and Spans:
+
+Divs:
+-Allow grouping of content together
+-Block level element, so it takes up a whole line
+
+Spans:
+-NOT a block level element, in-line
+
+
+HTML attributes: add extra info to element
+-Key value pair
+-Ex: <tag name="value"></tag>
+
+	Images:
+	<img src="corgi.png">
+
+	Links:
+	<a href="url">Link Text</a>
+	Note: in-line element
+	Note: must use http protocol
+
+Assignment 2: recreate his page
+
+
+
+
+
+
+
+
+
+
+
