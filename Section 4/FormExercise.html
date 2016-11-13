@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form Exercise</title>
+</head>
+<body>
+	<h1>Register Account</h1>
+	<form method="GET">
+		<label for="first_name">First Name:</label>
+		<input id="first_name" type="text" name="first_name" placeholder="John" required>
+		<label for="last_name">Last Name:</label>
+		<input id="last_name" type="text" name="last_name" placeholder="Smith" required>
+
+		<br>
+
+		<label for="male">Male:</label>
+		<input id="male" name="gender" type="radio" value="male">
+		<label for="female">Female:</label>
+		<input id="female" name="gender" type="radio" value="female">
+		<label for="Other">Other:</label>
+		<input id="other" name="gender" type="radio" value="other">
+		
+		<br>
+		
+		<label for="email">Email:</label>
+		<input id="email" type="email" placeholder="your email" required>
+		<label for="password">Password:</label>
+		<input id="password" type="password" pattern=".{5,10}" required title="5 to 10 characters">
+		
+		<br>
+		
+		<label for="birthday">Birthday:</label>
+		<select id="birthday" name="birth_month">
+			<option>Month</option>
+			<option value="first_month">Month 1</option>
+			<option value="second_month">Month 2</option>
+		</select>
+		<select id="birthday" name="birth_day">
+			<option>Day</option>
+			<option>Day 1</option>
+			<option>Day 2</option>
+		</select>
+		<select id="birthday" name="birth_year">
+			<option>Year</option>
+			<option>Year 1</option>
+			<option>Year 2</option>
+		</select>
+
+		<br>
+
+		I agree to the terms and conditions
+		<input type="checkbox" name="agree" value="agreed">
+		
+		<br>
+		
+		<input type="submit">
+	</form>
+</body>
+</html>

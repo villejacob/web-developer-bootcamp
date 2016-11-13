@@ -1,0 +1,192 @@
+Section 4
+
+Formatting for tables:
+
+This makes a table with:
+	- tr for each row
+	- td for each cell
+	- th for header
+
+BUT: right now each row is explained separately
+fix: add <thead> and <tbody>
+	- Head info goes into thead
+	- Body info goes into tbody
+
+<table border="1">
+<thead>
+	<tr>
+		<th>Name</th>
+		<th>Age</th>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td>Rusty</td>
+		<td>2</td>
+	</tr>
+	<tr>
+		<td>Wyatt</td>
+		<td>13</td>
+	</tr>
+</tbody>
+</table>
+
+Name  |	Age
+============
+Rusty |  2
+Wyatt |  13
+
+Exercise: Pokemon table
+
+
+Forms: Get information from a user
+	form, input, label tags, and validation
+
+<form>
+Is a container for all of the inputs
+Two important attributes:
+	action: where to send data
+	method: what type of http request (get, post, etc)
+		get when receiving info
+		post when changing info
+		Ex: google search: get
+			sign in: post
+
+<input>
+Fields recieved from user
+type: ="text", "email", "password", etc (there are a lot)
+
+<form>
+	<input type="text">
+	<input type="password">
+</form>
+
+Note: each of these are in-line elements
+
+Submit buttons: visually these are equal
+<button>Submit</button> == <input type="submit">
+
+placeholder="username" (temporarily fills the input)
+
+Now: place in the form tag
+
+Note: form itself is not in-line, it is a block element
+Action: Where the form sends data
+Method: HTTP verb
+
+name attribute:
+	<input name="username" typ....>
+	name is sent to the end of the URL as a query string
+	Aka: data is sent somewhere
+	
+Now we can retrieve data from the form!
+Sends this query string to wherever the action specifies
+
+Label tag:
+<label>
+	Username:
+	<input type="text" placeholder="username"
+</label>
+
+- This places a label for the input
+	Username: __________
+
+Other syntax:
+<label for="username">Username:</label>
+<input id="username" type="text">
+	- for and id need to match!
+
+Allows accessibility!
+
+
+Form validation:
+valid email, password has x characters, etc
+
+Make sure it is not empty: (presence validation)
+add required attribute to the end (boolean attribute)
+<input type="text" placeholder="username" required>
+	- Then the browser alerts user, letting them know
+	(Does not work in all browsers)
+
+based on type:
+<input type="email">
+	Automatically makes sure it has an @
+
+
+Inputs:
+radio: cannot uncheck
+checkbox: can change
+
+To make it so you can only check one radio
+	use same name!
+		<label for="dogs">Dogs: </label>
+		<input name="pet_choice" id="dogs" type="radio">
+		<label for="cats">Cats: </label>
+		<input name="pet_choice" id="cats" type="radio">
+
+Note: if button is the last thing at the bottom of a form, it will submit
+
+At this point, submitting will just output "pet_choice=on"
+To make it be unique to the input, add value attribute
+<input name="pet_choice" id="dogs" type="radio" value="DOGS">
+
+<select>
+This is a dropdown
+then use <option></option> to list the possible values
+
+Nothing returns yet, because there is no provided name
+	place in the select tag: <select name="color">
+
+Browser places the text within option as the value
+
+To change what is displayed vs returned:
+	value attribute: <option value="happy">:D</option>
+
+
+Textarea tag:
+Inputs that are more than one line
+	text: <input type="text">
+	textarea: <textarea></textarea>
+
+To define the size: rows and cols attributes
+<textarea rows="10" cols="50"></textarea>
+To send data: set name
+
+
+Forms exercise
+	validations: first/last name, email, password
+		email must be email address
+	Bonus: Validate password length between 5 and 10 characters
+	Note: do not need all dates for birthday dates
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
