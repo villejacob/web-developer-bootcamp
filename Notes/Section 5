@@ -1,0 +1,256 @@
+Section 5
+
+
+OBJECTIVES
+	1. Define "General Rule" of CSS
+	2. How to properly include CSS in HTML files
+	3. Select elements by tag name, class name, and ID
+	4. Style elements with basic properties
+	5. Use developer tools to debug CSS and HTML
+
+CSS: What it is and what it does
+Cascading Style Sheets
+	"Adjectives" that define how they should look
+
+
+GENERAL RULE
+
+selector {
+	property: value;
+	anotherProperty: value;
+}
+
+follows the key: value format.
+
+Example:
+/* Make all h1 purple with 56px font */
+h1 {
+	color: purple;
+	font-size: 56px;
+}
+
+
+WHERE ARE STYLES INCLUDED?
+
+could include within an element:
+<li style="color: purple;">Reading</li>
+	- would have to repeat for all of these
+
+Want to separate style and content
+
+In head:
+<style type="text/css">
+	selector {
+	property: value;
+	}
+</style>
+
+Conflicting styles: takes the style that came latest
+
+To separate without nesting:
+use <link>
+<link rel="stylesheet" type="text/css" href="app.css">
+
+
+COLORS IN CSS
+
+hexadecimal: # + string of 6 numbers from 0-F
+	- #000000
+	- #4B0082
+	- #FF1493
+
+First 2: red, then blue, then green
+Note: #000000 is black, #FFFFFF is white
+
+in CSS:
+All red, no blue or green
+h1 {
+	color: #FF0000;
+}
+
+rgb: 3 channels that range from 0-255
+h1 {
+	color: rgb(0, 255, 0);
+}
+
+rgba: rgb but with transparency
+alpha: from 0.0 - 1.0 (1 is solid, 0 transparent)
+h1 {
+	color: rgba(11, 99, 150, 1)
+}
+
+
+BACKGROUND
+
+changes whole body, not just element
+body {
+	background: color;
+}
+
+to set as image:
+body {
+	background: url(http://...)
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+
+BORDERS
+
+borders: border-color: color;
+	needs width: border-width: size;
+	needs style: border-style: solid;
+
+shortcut: border: size style color;
+
+
+SELECTORS
+
+ID
+
+great to single out individual elements
+
+html: 
+added as an attribute: id="id_name" (goes in li, not input)
+
+css: 
+#id_name {
+	property: value;
+}
+
+CLASS
+
+same as ID, but can use for all elements within
+
+html:
+class="class_name"
+
+css:
+.class_name {
+	property: value;
+}
+
+Note: to start with box checked, add "checked" to element (like required)
+
+
+DEV TOOLS
+
+Can update changes live, does not change code itself
+
+
+SELECTORS
+	element
+	.class
+	#id
+
+Others:
+
+Star:
+Applies to every element
+* {
+	property: value;
+}
+
+Descendent:
+Applies to descendents under element
+Ex: Each anchor tag in the list:
+li a {
+	color: red;
+}
+
+Adjacent:
+Applies to elements on the same level (sibling)
+Ex: all vertically aligned ul that come after an h4
+h4 + ul {
+	property: value;
+}
+
+Attribute:
+Can select all links to a specific place, or images, etc
+a[href="http://www.google.com"] {
+	background: blue;
+}
+input[type="text"]{
+	property: value;
+}
+input[type="checkbox"]{
+	property: value;	
+}
+
+*nth of type:
+Select 5th div, 10th paragraph, etc
+Ex: Change color of the third ul
+ul:nth-of-type(3){
+	background: blue;
+}
+Ex: select all evens
+ul:nth-of-type(even){
+	backgorund: blue;
+}
+
+
+INHERITANCE AND SPECIFICITY
+
+INHERITANCE
+
+Turn color of ul to purple:
+	the list elements will have the color purple
+or: change body color to purple:
+	everything within body will now be purple
+
+If you define body first, then later an element, the element will be as defined later
+
+Inherited from body: color is blue, but not applied because it is later defined
+
+
+SPECIFICITY
+
+Whatever style is more specific is applied
+Ex:	coloring a list:
+	body -> red
+	ul -> orange
+	li -> green
+		Green wins!
+
+Ranking: (Most specific on the right, least on the left)
+	Inline styles > IDs > Classes/Attributes > Elements
+
+Exercise: selectors.css
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

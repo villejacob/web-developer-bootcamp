@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Specificity</title>
+	<style type="text/css">
+		body {
+			color: red;
+		}
+		ul {
+			color: orange;
+		}
+		li {
+			color: green;
+		}
+		.guitar {
+			color: blue;
+		}
+		#heartthrob {
+			color: purple;
+		}
+	</style>
+</head>
+<body>
+	<p>Not in the list</p>
+	<ul>
+		<li class="guitar">John</li>
+		<li id="heartthrob" class="guitar">Paul</li>
+		<li>George</li>
+		<li>Ringo</li>
+	</ul>
+</body>
+</html>

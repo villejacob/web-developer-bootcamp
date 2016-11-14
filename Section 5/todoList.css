@@ -1,0 +1,11 @@
+li {
+	border: 1px dashed black;
+}
+
+#third {
+	background: yellow;
+}
+
+.completed {
+	text-decoration: line-through;
+}
