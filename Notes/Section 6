@@ -1,0 +1,59 @@
+Section 6
+
+OBJECTIVES
+	1. Manipulate font and text properties in CSS
+	2. Include external fonts
+	3. Box model
+
+Projects:
+	Tic Tac Toe
+	Image Gallery portfolio site
+	Minimalist Blog Site
+
+font-family:
+	font-family: "font_name";
+
+font-size:
+	font-size: 	_px;
+				_em;
+
+em is a relative font size.
+	2em would be 2x the parent element
+	Initial size changes based on the browser (~60px)
+	good practice to define body font
+
+Note: Use span to define text in line
+
+font-weight:
+	How thick the lines will be
+	font-weight: bold;
+
+some fonts will allow numerical values between 100 - 800
+	(100, 200, 300, etc)
+
+line-height:
+	spacing
+	line-height: 2;
+	2 meaning it is 2x the font size
+
+text-align:
+	text-align: center;
+	center, left, right
+
+text-decoration:
+	underline, line-through, etc
+	text-decoration: underline;
+
+
+CUSTOM FONTS
+
+google fonts: google.com/fonts
+	"add to collection"
+	"use"
+	decide font weights
+	copy link, put in head
+
+to use:
+h1 {
+	font-family: Indie Flower;
+}
