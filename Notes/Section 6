@@ -57,3 +57,40 @@ to use:
 h1 {
 	font-family: Indie Flower;
 }
+
+
+THE BOX MODEL
+
+Every element has a rectangular box around it
+(can see when using developer tools)
+
+FOUR PROPERTIES:
+	Content
+	Padding
+		between content and border
+	Border
+	Margin
+		between border and others
+
+Note: 	if percents, it is 50% of what it is inside (dynamic)
+		padding: on all four sides
+				to specify: border-top: etc
+							padding-left: 40px;
+		margin: top right bottom left;
+				auto: centers an element
+
+Exercise: Tic Tac Toe 
+
+Exercise: Portfolio 
+
+To make divs go side-by-side:
+	FLOAT:
+		float: left;
+		// They float to the left of what is above, instead of below
+		Also gets rid of default whitespace
+
+Exercise: Minimalist blog
+
+rem: sets to root element instead of head (dont worry about nesting)
+
+
