@@ -1,0 +1,105 @@
+Section 7
+
+OBJECTIVES
+	1. Define Bootstrap
+	2. Include Bootstrap locally
+	3. Use common components like navbars and components
+	4. Build layout using grid
+
+Best to use to quickly demo front end
+
+Can use either downloaded or external file
+
+Use different classes to specify elements
+
+Active class:
+	just add the class "active"
+	Darker shading to indicate active
+
+COMPONENTS
+
+Jumbotron - huge display
+	just use class="jumbotron"
+	initially takes up whole screen
+	use grid system to make it less
+
+Container
+	default centered with some spacing
+
+Forms
+	form-control allows lego-like usage
+	form-group makes spacing look nice
+	form-inline
+
+Navbar
+	can use container within navbar to allow centered content
+	When using default, need Bootstrap js to work
+
+	To make our simple navbar collapse:
+		put in div with class "collapse navbar-collapse"
+	Add in hamburger:
+		add button with class navbar-toggle collapsed in navbar-header
+		id of button must match id of nav navbar-nav
+		If outside of collapse
+			They stay listed below and are not collapsed
+
+GRID SYSTEM
+	beside each other, then when collapsed they stack
+	12 columns, then choose how many of 12 an item takes up
+	Ex: <div class="col-md-3"></div>
+
+column sizes:
+	xs: mobile
+	sm: tablet
+	md: laptop
+	lg: desktop
+
+	add class for each size
+	if size is the same, don't need md and lg, just md
+
+Nested grids:
+	Must be within a row, can't be within just a column
+
+
+Project: Image Gallery
+
+Need to specify border around an image
+
+Thumbnail
+	class=thumbnail around image
+
+Icons
+	called glyphs
+	span with the class
+
+To make navbar stay to the top, add class navbar-fixed-top
+	Now add 70px padding to the top
+
+Code Along: Purrfect Match landing page
+
+Image properties: 
+	Cover will take up the whole document
+	but the body itself is not the full screen
+	html height to 100%
+
+Text shadow:
+	text-shadow: offset-x, offset-y, blur-radius, color
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
