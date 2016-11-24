@@ -1,0 +1,154 @@
+Section 8
+
+OBJECTIVES
+	1. Run JS in the developer console
+	2. 5 primitive data types
+	3. Define and reference variables
+	4. Write code using console.log, alert, and prompt
+
+Developer console:
+	Interact/test first, then implement in js file
+
+Javascript basics:
+
+5 PRIMITIVE DATATYPES
+	Numbers
+		4
+		9.3
+		-10
+		Does not separate into int, long, etc
+	Strings
+		"Hello World"
+		"43"
+		Inside of quotes
+	Booleans
+		true
+		false
+	null and undefined
+		null
+		undefined
+
+NUMBERS
+	Enter in a number, returns
+	Takes in simple operations
+	Follows order of operations
+
+STRINGS
+	Treats single and double quotes the same
+	But they must match
+	Can be nested
+		"I can't stop eating"
+		'I can't stop' :: INVALID
+	Concatenation
+		"hi" + "goodbye"
+	Escape character: \
+		Want: She said "goodbye"
+		Do: "She said \"goodbye\""
+	length property
+		.length
+		Note: no parenthesis
+		Counts characters
+	Access like an array:
+		"The Beatles"[0]
+		-> T
+		Last character:
+			"The Beatles"[.length-1]
+
+Concept check:
+	1. 100 % 3 = 1
+	2. ("blah" + "blah")[6] = 'a'
+	3. "hello".length % "hi\\".length = 5 % 3 = 2
+
+
+VARIABLES
+	Named container that stores values
+	syntax:
+		var variable_name = variable_value;
+	Examples:
+		var name = "Rusty";
+		var secretNumber = 73;
+		var isAdorable = true;
+	Do not need to declare variable type
+	Changing variable type (Dynamic typing)
+		var num = 50;
+		num = "fifty";
+	Naming convention: camelCase
+
+UNDEFINED
+	Declared but not initialized
+	var age;
+
+NULL
+	var currentPlayer = "charlie";
+	currentPlayer = null;
+
+
+METHODS
+
+clear() - clears the current window
+
+alert
+	pops up message to user
+	alert()
+		in parenthesis, put datatype
+
+console.log()
+	prints to the console
+		in parenthesis, put whatever
+
+prompt("what is your name?")
+	Asks user for input
+	stores as variable
+	Ex: var userName = prompt("what is your name"0);
+	now userName is whatever the user entered
+
+JS Stalker Exercise
+	- ask for first name
+	- ask for last name
+	- ask for age
+	To console:
+	- print out users full name in a sentence
+	- print out the users age in a sentence
+
+Age Calculator Exercise
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
