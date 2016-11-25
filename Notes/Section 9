@@ -1,0 +1,99 @@
+Section 9
+
+OBJECTIVES
+	1. Evaluate complex logical statements
+	2. Write 3-part JS conditional statements
+	3. Write JS while and for loops
+	4. Translate between while and for loops
+
+BOOLEAN LOGIC
+	>, >=, <, <=, ==, !=
+	new:	=== Equal value AND type
+			!== Not equal value OR equal type
+
+type coercion:
+	Tries to turn them into a similar type to compare them
+	=== does NOT perform type coercion
+	99 == "99" TRUE
+	99 === "99" FALSE
+	Note: NaN == NaN FALSE
+
+LOGICAL OPERATORS
+	&& 	AND
+	|| 	OR
+	! 	NOT
+
+Truthy and Falsy values
+	Inherent in each value
+	To find out:
+		!"hello" -> false
+		therefore it is truthy
+		or: !!"hello" -> true
+
+	falsy
+		false
+		0
+		""
+		null
+		undefined
+		NaN
+	truthy
+		everything else
+
+
+CONDITIONALS
+
+ 	if(age < 18){
+ 		console.log("bleh");
+ 	}
+ 	else if(age < 21){
+ 		console.log("other bleh");
+ 	}
+ 	else{
+ 		console.log("default other message");
+ 	}
+
+ Exercise: 
+ 	age is negative - print error
+ 	age is 21 - print
+ 	age is odd - print
+ 	age is perfect square - print
+
+ typeof to get type of an element
+
+ Declare type:
+ 	Number(guess)
+ 	turns var guess into a number
+
+
+ LOOPS
+
+	 DRY - Don't Repeat Yourself
+	 	Make it fucking dry.
+
+WHILE
+	while(condition){ // code }
+	 	repeat the code as long as condition is true
+
+	 Example:
+	 	while (count < 6) {
+	 		console.log("count is " + count);
+	 		count++;
+	 		// count+=1;
+	 	}
+
+
+Annoy-omatic code-along
+
+Check substring
+	var str = "hello world";
+	str.indexOf("world");
+	-> 6
+
+
+FOR
+	for (var count = 0; count < 6; count++){
+		console.log(count);
+	}
+	Note: count only exists within the loop
+
