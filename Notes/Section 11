@@ -1,0 +1,192 @@
+Section 11
+
+OBJECTIVES
+	1. Define and add data to arrays
+	2. Utilize built-in array methods
+
+
+ARRAYS
+
+	var friends = ["Charlie", "Liz", "David"];
+
+	friends[0]
+	>>"Charlie";
+	friends[2]
+	>>"David";
+
+	friends[0] = "Charlie"
+
+	To add an element:
+		Add a new index of this element
+
+		friends[3] = "Amelie";
+
+		friends[10] = "Jordan";
+		friends
+		>>["Charlie", "Liz", "David", Amelie, undefined x 6, "Jordan"]
+		// Javascript adds empty spaces
+
+
+Ways to define:
+	var friends = [];
+	var friends = new Array();
+
+	Note: they can contain any type of data
+
+Length property:
+	friends.length
+	>>10
+
+
+ARRAY METHODS
+
+	push/pop
+		var colors = ["red", "orange", "yellow"]
+		colors.push("green")
+			// This appends to the end of the array
+			// Also returns the new size
+		colors.pop()
+			// Returns the last element
+			// Removes the last element
+
+	shift/unshift
+		colors.unshift("infrared")
+			// Adds to the front of an array
+		colors.shift()
+			// Removes and returns the first element
+
+	indexOf
+		var friends = ["Charlie", "Liz", "David", "Liz"];
+		friends.indexOf("David")
+		>>2
+		friends.indexOf("Liz")
+		>>1 	// Returns the first instance
+
+		To see if it exists in the array:
+			returns -1 if not there
+
+	slice
+		var fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+		var citrus = fruits.slice(1, 3);
+
+		// Starts at first, ends before second
+		// Leaves the other unchanged
+
+		citrus
+		>>["Orange", "Lemon"]
+		fruits
+		>>["Banana", "Orange", "Lemon", "Apple", "Mango"]
+
+		To copy an array:
+		var fruitCopy = fruit.slice();
+
+
+Nested (2D) arrays
+	friends[2][0]
+		Row 3, Col 0
+
+
+Todo List: Code Along pt1
+
+
+ARRAY ITERATION
+
+	var colors = ["red", "orange", "blue"];
+	
+	for loop:
+
+		for(var i = 0; i < colors.length; i++){
+			console.log(colors[i]);
+		}
+
+	forEach:
+
+		Takes in an anonymous function
+		arr.forEach(someFunction)
+		someFunction does something with each element
+			Can take in arguments
+
+		colors.forEach(function(color){
+			console.log(color);
+		});	
+
+
+Todo List: Code Along pt1
+
+Enumeration equivalent: add i as another element
+
+Remove an element from an array by index:
+	arr.splice(index, 1);
+	first argument: index of element to be removed
+	second argument: how many elements will be removed
+
+
+Building our own forEach
+
+	var nums = [45, 65, 77, 34]
+
+	nums.forEach(function(num){
+		console.log(num);
+	});
+
+	function myForEach(arr, func) {
+		// loop and call func for every item in arr
+		for(var i = 0; i < arr.length; i++){
+			func();
+		}
+	}
+
+	// As an example, call myForEach(colors, alert)
+
+	To make it do something, just pass in argument to func
+
+	function myForEach(arr, func) {
+		// loop and call func for every item in arr
+		for(var i = 0; i < arr.length; i++){
+			func(arr[i]);
+		}
+	}
+
+	// Now use it with an anonymous function
+
+	myForEach(colors, function(color){
+		console.log(color);
+	})
+
+	// Now add to Array.prototype:
+
+	Array.prototype.myForEach = function(func){
+		for(var i = 0; this.length; i++){
+			func(this[i]);
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
