@@ -1,0 +1,224 @@
+Section 12
+
+OBJECTIVES
+	1. What are javascript objects
+	2. How do we make them
+
+
+Just like a class or struct or dict
+	
+
+OBJECT
+	
+	var person = {
+		name: "Cindy",
+		age: 32,
+		city: "Missoula"
+	};
+
+Note: No order for objects
+
+
+RETRIEVE DATA
+
+	// bracket notation
+	console.log(person["name"]);
+	// dot notation
+	console.log(person.name);
+
+	RESTRICTIONS:
+
+		No dot notation for:
+			property starts with a number
+				someObject.1blah    	// INVALID
+				someObject["1blah"] 	// VALID
+			property name has spaces
+				someObject.fav color 	// INVALID
+				someObject["fav color"]	// VALID
+
+		Can lookup using variables in bracket notation
+			var str = "name";
+			someObject.str  // Doesn't lookup for "name"
+			someObject[str] // evaluate str which is "name"
+
+
+UPDATE DATA
+	
+	// bracket notation
+	person["age"] += 1; 
+	// dot notation
+	person.city = "London";
+
+
+CREATING OBJECTS
+
+	Object literal:
+		Declare each value like before
+	Create empty object, then add
+		var person = {}
+		person.name = "Travis";
+		person.age = 21;
+		person.city = "LA";
+
+
+NOTE
+	They can hold anything, even other objects
+
+
+NESTED OBJECTS/ARRAYS
+
+	array of posts:
+		var posts = [
+			{
+				title: "Cats are mediocre",
+				author: "Colt",
+				comments: ["Awesome", "terrible"]
+			},
+			{
+				title: "Cats are actually great",
+				author: "Cat luvr",
+				comments: ["<3", "go to hell"]
+			}
+		]
+
+	Title of the first:
+		posts[0].title
+		>>"Cats are mediocre"
+	Second comment in second item
+		posts[1].comments[1]
+		>>"go to hell"
+
+EXERCISE
+	
+	var someObject = {
+		friends: [
+			{name: "Malfoy"},
+			{name: "Crabbe"},
+			{name: "Goyle"}
+		],
+		color: "baby blue",
+		isEvil: true
+	};
+
+	// Get "Malfoy"
+	someObject.friends[0].name
+
+
+movieDB Practice
+	
+	// Create an array of movie objects
+	// each movie has a title, rating, and hasWatched
+	// Iterate through and print
+
+	var movieDB = [
+		{title: "In Bruges",
+		rating: 5,
+		hasWatched: true
+		},
+		{title: "Frozen",
+		rating: 4.5,
+		hasWatched: true
+		},
+		{title: "Max Max Fury Road",
+		rating: 5,
+		hasWatched: false
+		}
+	];
+
+	movieDB.forEach(function(movie){
+		console.log("You have ");
+		if(!movie.hasWatched){
+			console.log("not ");
+		}
+		console.log("watched " + movie.title);
+		console.log(" - " + movie.rating + " stars");
+	});
+
+	OR use a string instead of lots of console.log()
+
+	movieDB.forEach(function(movie){
+		var result = "You have ";
+		if(movie.hasWatched){
+			result += "watched ";
+		} else {
+			result += "not seen ";
+		}
+		result += "\"" + movie.title + "\" - ";
+		result += movie.rating + " stars";
+		console.log(result);
+	});	
+
+	Make it cleaner:
+
+	function buildString(movie){
+		var result = "You have ";
+		if(movie.hasWatched){
+			result += "watched ";
+		} else {
+			result += "not seen ";
+		}
+		result += "\"" + movie.title + "\" - ";
+		result += movie.rating + " stars";
+		return result;
+	}
+
+	movieDB.forEach(function(movie){
+		console.log(buildString(movie));
+	});
+
+
+METHODS
+
+	function that is a property in an object
+
+	Example:
+
+		var obj = {
+			name: "Chuck";
+			age: 45,
+			isCool: false,
+			friends: ["bob", "tina"],
+			add: function(x, y){
+				return x + y;
+			}
+		}
+
+		To call it:	
+			obj.add(10, 5);
+
+		Now it is associated with an object
+
+		Reasons
+			Organization
+
+
+THIS keyword
+
+	Example:
+
+		var comments = {};
+		comments.data = ["Good Job", "Another", "comment", "arbitrary"];
+
+		To print all of them rn, need an external function
+
+			function print = function(arr){
+				arr.forEach(function(el){
+					console.log(el);
+				})
+			}
+
+			// to run:
+			print(comments.data);
+			// ew
+
+		But by making print a method of comments, don't need an external method
+
+			comments.print = function(){
+				this.data.forEach(function(el){
+					console.log(el);
+				})
+			}
+
+			// to run:
+			comments.print()
+			// yay
