@@ -1,0 +1,240 @@
+Section 10
+
+OBJECTIVES
+	1. Write funciton declarations and expressions
+	2. Explain the difference between console.log and return
+	3. Define functions that take multiple arguments
+
+
+FUNCTIONS
+
+	// First declare the function:
+	function doSomething() {
+		console.log("HELLO WORLD");
+	}
+
+	// Then call the function
+	doSomething();
+
+
+ARGUMENTS
+	
+	function square(num) {
+		console.log(num * num);
+	}
+
+	num is the argument, can be called anything
+
+	// called:
+	square(3);
+	>> 9
+
+	MULTIPLE:
+
+		function area (length, width) {
+			console.log(length * width);
+		}
+
+		area(9, 2);
+		>>18
+
+		Determined by order passed in
+		If not passed in, variable is undefined
+
+
+RETURN
+
+	return ______;
+	Only returns one value
+
+	save results:
+		var result = square(104);
+
+Declaration vs Expression
+
+	Declaration:
+
+		function capitalize(str) {
+			return str.charAt(0).toUpperCase() + str.slice(1);
+		}
+
+	Expression:
+
+		var capitalize = function capitalize(str) {
+			return str.charAt(0).toUpperCase() + str.slice(1);
+		}
+
+Example:
+	var sayHi = function(){
+		console.log("Hello");
+	}
+
+	Allows BOTH:
+		sayHi()
+		>>Hello
+
+		sayHi = 34
+		sayHi
+		>>34
+		sayHi()
+		>>Undefined
+
+
+QUIZ
+
+	1. isEven() - takes in single number, returns if even
+
+		function isEven (number){
+			if (number%2 === 0){
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+
+		// shorter:
+		function isEven(number){
+			return number % 2 === 0;
+		}
+
+	2. factorial() - takes a single number, returns factorial
+
+		function factorial(number){
+			var result = 1;
+			for (var i = number; i > 0; i--){
+				result *= i;
+			}
+			return result;
+		}
+
+	3. kebabToSnake() - takes kebab-cased string, returns snake_cased string
+
+		function kebabToSnake(kebab){
+			var snake;
+			for (var i = 0; i < kebab.length; i++){
+				if (kebab[i] == '-'){
+					snake += '_';
+				}
+				else {
+					snake += kebab[i];
+				}
+			}
+			return snake;
+		}
+
+		OR
+
+		function kebabToSnake(kebab){
+			var snake = kebab.replace(/-/g , "_");
+			return snake;
+		}
+
+
+SCOPE
+	Context code is executed in
+	What is visible within this function
+
+	function doMath(){
+		var x = 40;
+		console.log(x);
+	}
+
+	x is not defined outside of the function scope
+	if x is defined:
+		var x = "hello";
+	still returns "hello" if run in the console
+
+	Each scope has its own declared and used variables
+
+	ACCESS OUTSIDE OF SCOPE
+
+		var y = 99;
+
+		function doMoreMath(){
+			console.log(y);
+		}
+		>>99
+
+		Still has access to variables outside of the function
+
+		What if:
+
+		function doMoreMath(){
+			y = 100;
+			console.log(y);
+		}
+		>>100
+		outside: >>100
+
+		Referenced and changed global variable
+
+		NOTE
+		To not access same variable, declare it again
+
+		var phrase = "hello";
+
+		function talk(){
+			var phrase = "goodbye";
+			console.log(phrase);
+		}
+		>>"goodbye"
+
+		outside:
+		>>"hello"
+
+		ALSO:
+			Cannot access names inside functions:
+
+			function hi(){
+				var name = "Rusty";
+				console.log(name);
+			}
+			>>"Rusty"
+
+			function bye(){
+				console.log(name);
+			}
+			>>Undefined
+
+
+HIGHER ORDER FUNCTIONS
+	take function as an argument, or returns one
+
+	example:
+	function sing() {
+		console.log("twinkle twinkle...);
+		console.log("how I wonder....");
+	}
+
+	sing()
+	>>"twinkle twinkle..."
+	>>"how I wonder...."
+
+	setInterval(sing, 1000) //1000 ms
+
+	>>"twinkle twinkle..."
+	>>"how I wonder...."
+
+	// 1000ms later
+
+	>>"twinkle twinkle..."
+	>>"how I wonder...."
+
+	clearInterval(2);
+
+
+
+ANONYMOUS FUNCTION
+
+	setInterval(function(){
+		console.log("I am anonymous");
+	}, 2000);
+
+	Argument 1:
+	function(){
+		// blah
+	}
+
+	Argument 2:
+	2000
