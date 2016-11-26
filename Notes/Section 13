@@ -182,6 +182,30 @@ DOM MANIPULATION
 			tag.innerHTML
 			>>"This is an <strong>awesome</strong> paragraph"
 
+	ATTRIBUTES
+
+		Things like href and src
+
+		<a href="www.google.com">I am a link</a>
+		<img src="logo.png">
+
+		// SELECT
+		var link = document.querySelector("a");
+		link.getAttribute("href"); // >>"www.google.com"
+		// CHANGE HREF
+		link.setAttribute("href", "www.dogs.com");
+		// <a href="www.dogs.com">I am a link</a>
+
+		// TO CHANGE IMAGE SRC
+		var img = document.querySelector("img");
+		img.setAttribute("src", "corgi.png");
+
+		Note: To go to a link absolutely not relatively
+			http://...
+
+		
+
+
 
 
 
