@@ -1,0 +1,93 @@
+Section 17
+
+
+EVENTS
+
+	click()
+
+		Add a click listener very easily
+		Does this to all elements
+
+			$("h1").click(function(){
+			  alert("h1 clicked");
+			});
+
+		NOTE: to use "this":
+
+			$(this)
+
+			$("button").click(function(){
+			  var text = $(this).text();
+			  console.log("you clicked " + text);
+			});
+		
+	keypress()
+
+		This event is when a key is pressed
+		shift + p >> keypress would be P
+
+		// Runs for every character entered
+		$("input").keypress(function(){
+		  console.log("Button Pressed");
+		});
+
+		// Check if the user hit enter
+		$("input").keypress(function(event){
+			if(event.which === 13){
+				alert("You hit enter");
+			}
+		});
+	
+	on()
+
+		Very similar to addEventListener()
+		Specifies the type of event to listen for
+
+			$("h1").on("click", function(){
+				// This is called the callback function
+				// The h1 clicked on changes
+				$(this).css("color", "purple")
+			});
+
+			$("input").on("keypress", function(){
+				console.log("Key pressed");
+			});
+
+			$("button").on("mouseenter", function(){
+				$(this).css("font-weight", "bold");
+			});
+
+			$("button").on("mouseleave", function(){
+				$(this).css("font-weight", "normal");
+			});
+
+	click() vs on('click')
+
+		click() only adds listeners for existing elements
+		on() adds listeners for all potential future elements
+
+
+
+MORE EFFECTS
+
+	.fadeOut(options)
+
+		options is in ms
+		To make event happen AFTER another finishes, make an anonymous function as an input to the fadeOut function
+
+		$("button").on("click", function(){
+			$('div').fadeOut(1000, function(){
+				$(this).remove();
+			});
+		});
+
+	.fadeIn(options)
+	.fadeToggle(options)
+
+	.slideDown	
+	.slideUp
+	.slideToggle
+
+		$("button").on("click", function(){
+			$("div").slideToggle(500);
+		});
