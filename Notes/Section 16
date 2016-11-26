@@ -1,0 +1,181 @@
+Section 16
+
+What is it?
+	
+	DOM Manipulation Library
+
+	Methods are helpful to
+		select elements
+		manipulate elements
+		create elements
+		add event listeners
+		animate elements
+		add effects
+		make HTTP requests
+
+
+Why use it?
+	
+	Fixed DOM API
+	Makes code clearer and shorter
+	Cross-browser support
+	AJAX
+
+
+Why not use it?
+	
+	DOM API is no longer broken
+	Doesn't do anything you can't do on your own
+	Unnecessary dependency
+	Performance
+
+
+How to include:
+	
+	Download and link to it locally
+	OR
+	CDN: Content Distributed Network
+
+
+SELECT
+
+	Just use a dollar sign (dolla dolla bills yall)
+		- Note: I hate myself for typing that
+		Similar to querySelectAll
+		$("selectorGoesHere")
+		>>Returns all matching elements
+
+		Examples:
+
+			// select all img tags
+			$("img")
+			// select all anchor tags in a list
+			$("li a")
+
+			NOTE always returns a list, even with 1 element
+
+			// If ul with li with link: all select same
+			$("a")
+			>>[a]
+			$("li a")
+			>>[a]
+			$("ul li a")
+			>>[a]
+
+
+.CSS METHOD
+
+	$("selector")
+	.css(property, value)
+
+	Can define a style as an object:
+
+		var coolStyle = {
+			color: "red",
+			background: "pink",
+			border: "2px solid purple"
+		}
+
+	Then apply that style to an element:
+		NOTE: Will manipulate ALL elements
+
+		$("h1").css(coolStyle)
+
+		// Turn all li's green
+		$("li").css("color", "green")
+
+		Can also define in-place:
+
+			$("li").css({
+				fontSize: "10px",
+				border: "3px dashed purple",
+				background: "green"
+			})
+
+
+JQUERY vs JAVASCRIPT EXAMPLE
+
+	Turn all li's green
+
+	jQuery
+
+		$("li").css("color", "green")
+
+	javascript
+
+		var lis = document.querySelectorAll("li");
+		for(var i = 0; i < lis.length; i++){
+			lis[i]style.color = "green";
+		}
+
+
+EXERCISE:
+
+	1. Correctly include jQuery
+
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	
+	2. select all divs and give them a purple background
+	
+		$("div").css("background", "purple")
+	
+	3. select divs with class "highlight" and make them 200px wide
+
+		$(".highlight").css("width", "200px");
+
+	4. select the div with id "third" and give it an orange border
+
+		$("#third").css("border", "4px solid orange");
+
+	5. Select the first div only and change font color to pink
+
+		$("div:first-of-type").css("color", "pink");
+		// OR
+		// But this is slower
+		$("div:first").css("color", "pink");
+
+
+TEXT and HTML MANIPULATION
+
+	val()
+
+		Can be used to get values, like from input
+		Useful to reset values entered by the user
+
+		Or with a dropdown, can grab what they ended on
+			$("select").val();
+
+	text()
+
+		Gets all of the text for all of these into one string
+		Input is what the fields will be updated to
+
+	attr()
+
+		Retrieve the value of an attribute, or update
+		One argument: get it
+		Two arguments: set it
+
+		Example:
+
+			$('img').attr("src", "https://c1.staticflickr.com/3/2418/2243463214_f32ab004af_b.jpg")
+
+	html()
+
+		Works just line innerHTML
+		Can include html tags to transform text
+
+		Example:
+
+			$("ul").html("<li>I hacked your UL</li><li>More text</li>");
+
+	addClass()
+
+		// Assume "correct" is the name of a class
+		$("li").addClass("correct");
+		
+	removeClass()
+	toggleClass()
+
+NOTE: 	$("img").last().attr(...) changes the last
+		$("img").first().attr(...) changes the first
