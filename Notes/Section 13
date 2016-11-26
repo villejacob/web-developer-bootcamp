@@ -1,0 +1,233 @@
+Section 13
+
+OBJECTIVES
+	1. What the DOM is
+	2. Understanding its importance
+	3. Understand SELECT then MANIPULATE workflow
+
+DOM - Document Object Model
+
+	The interface between Javascript and HTML+CSS
+	HTML is turned into a model with everthing defined as objects
+	Browser takes each element and turns it into an object
+	Called DOCUMENT object model because document is the root
+		Represented as a tree
+
+				   #document
+					   |		
+			  __  Root element:  __
+		  	 /	     <html>		   \
+		   	/		 			    \
+		Element:		    ____  Element:  ____
+		  <head>	  	   /	   <body>	    \
+			|			  /					     \
+		Element:	  Element: _____		   Element:
+		 <title>	    <a>	        \			 <h1>
+			|			 |		     \			  |
+		   Text:	 Attribute:	    Text:		 Text:
+		"My Title"	   "href"	  "My link"	   "My header"
+
+
+
+DEFINING THE DOM
+
+SELECT
+	Similar to how you do it in CSS
+	// Returns an object that selects the h1
+	var h1 = document.querySelector("h1");
+
+MANIPULATE
+	h1.style.color =  "pink";
+
+Example: select <body> and change color every second
+	var body = document.querySelector("body") // SELECT
+	var isBlue = false;
+
+	setInterval(function(){
+		if (isBlue){
+			body.style.background = "white";
+		} else {
+			body.style.background = "#3498db";
+		}
+		isBlue = !isBlue;
+	}, 1000);
+
+
+DOM SELECTORS
+
+	Document is the root
+	can select in console by document.name
+
+	METHODS
+
+		// Referencing selectors.html
+
+		document.getElementById()
+			var tag = document.getElementById("highlight");
+			>>List Item 1 // Object representation as object
+		document.getElementsByClassName()
+			var tags = document.getElementsByClassName("bolded");
+			>>List Item 2
+			>>List Item 3
+			tags[0]
+			>>List Item 2
+			tags.length
+			>>2
+			tags.forEach()
+			>>NOPE
+		document.getElementsByTagName()
+			var tags = document.getElementsByTagName("li");
+			>>List Item 1
+			>>List Item 2
+			>>List Item 3
+			Note: All of these are OBJECTS
+		document.querySelector()
+			// Select by CSS style selector
+			var tag = document.querySelector("#highlight");
+			>>List Item 1
+			Note: Only returns just ONE element
+			var tag = document.querySelector(".bolded");
+			>>List Item 2
+			// Can do it with nested elements
+			var tag = document.querySelector("li a.highlight");
+		document.querySelectorAll()
+			// Works the same way as above, but returns all of them
+			var tag = document.querySelectorAll(".bolded");
+			>>List Item 2
+			>>List Item 3
+
+
+EXERCISE
+	
+	4 different ways to select the first <p> tag
+
+	1. var p = document.getElementsByTagName("p")[0];
+	2. var p = document.querySelector("p");
+	3. var p = document.querySelectorAll("p")[0];
+	// Assume id of "first"
+	4. var p = document.getElementbyId("first");
+
+
+DOM MANIPULATION
+
+	changing an elements style
+	adding/removing classes
+	changing the content of a tag
+	changing attributes(src, href, etc)
+
+	STYLE
+
+	 	// SELECT
+	 	var tag = document.getElementById("highlight");
+	 	// MANIPULATE
+	 	tag.style.color = "blue";
+	 	tag.style.border = "2px solid blue";
+
+	 	SEPARATION OF CONCERNS
+
+	 		minimize crossover between js and css
+	 		keep them definied in separate files
+
+	 	To change many at once: define a class in css
+
+		 	.some-class {
+		 		color: blue;
+		 		border: 10px solid red;
+		 	}
+
+		 Then define class in js:
+
+		 	var tag = document.getElementById("highlight");
+		 	// Add the new class to the selected element
+		 	tag.classList.add("some-class");
+
+
+		CLASSLIST
+
+			A classList is a read-only list that contains the classes for a given element (similar to a tuple) ((NOT AN ARRAY))
+
+			tag.classList.add("another-class");
+			tag.classList.remove("another-class");
+			// If it has this class, turn off. Otherwise turn on
+			tag.classsList.toggle("another-class");
+
+			Instead of individually going into CSS to change classes:	
+				just turn on and off classes with JS
+
+	TEXT
+
+		textContent
+
+			Text: anything between tags but not tags
+			From below: text is "This is an awesome paragraph"
+
+			example:
+				<p>
+					This is an <strong>awesome</strong> paragraph
+				</p>
+
+			// SELECT
+			var p = document.getElementsByTagName("p")[0];
+			p.textContent
+			>>"This is an awesome paragraph"
+
+			Change content:
+			p.textContent = "Cool paragraph"
+			// Overwrites strong tags, no longer present
+
+		innerHTML
+
+			Keeps the html elements within
+
+			tag.innerHTML
+			>>"This is an <strong>awesome</strong> paragraph"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
