@@ -1,0 +1,89 @@
+Section 14
+
+DOM EVENTS
+
+	clicking on a button
+	hovering over a link
+	dragging and dropping
+	pressing the enter key
+
+	aka: runs some code when something happens
+
+PROCESS
+
+	select an element, then add an event listener
+
+	example:
+		listen for click on <button>
+		listen for hover on <h1>
+		listen for keypress on text input
+
+SYNTAX
+
+	addEventListener
+
+	element.addEventListener(type, functionToCall);
+
+	examples:
+
+		var button = document.querySelector("button");
+		button.addEventListener("click", function(){
+			console.log("CLICKED");
+		});
+
+		or
+
+		button.addEventListener("click", function(){
+			paragraph.textContent = "Someone clicked the button";
+		});
+
+	Can also rewrite it using a named function:
+
+		var button = document.querySelector("button");
+		var paragraph = document.querySelector("p");
+
+		// Pass the function into this function
+		button.addEventListener("click", changeText)
+
+		function changeText() {
+			paragraph.textContent = "Someone clicked the button";
+		}
+
+	Usually just use anonymous function:
+
+		button.addEventListener("click", function(){
+			paragraph.textContent = "Someone clikced the button";
+		});
+
+
+
+Exercise: Color Changer
+	toggle the bodys background color between purple and white when a button is clicked
+
+	NOTE: Need JS to run AFTER the code, just above the body
+
+	First: toggle style background with event listener
+
+	Second: Add a class that is toggled
+
+
+PROJECT: Score Keeper
+
+	NOTE: Uses state to keep track
+		var gameOver = false;
+		var winningScore = 5;
+	Event for number input:
+		"change"
+
+	Initial bug: when changing the winningScore, does not go into effect, can still increment forever
+		Solution: cast numInput as number
+			Number(numInput.value)
+
+	Other bug: once started, can change score to less than current
+		Solution: reset to 0 when changed
+
+
+MORE EVENTS
+
+	mouseover
+	mouseout
