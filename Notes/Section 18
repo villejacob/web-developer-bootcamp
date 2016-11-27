@@ -1,0 +1,51 @@
+Section 18
+
+Folder Structure
+
+	index.html
+	assets
+		css
+			todos.css
+		js
+			todos.js
+			lib
+				jquery-3.1.1.min.js
+
+
+EVENT BUBBLING
+
+	Starts on what is clicked, then bubbles up to the parents
+
+	To prevent: add event object as input to anonymous function
+	then add event.stopPropagation();
+
+
+First bug
+
+	When dynamically creating new todos, the listeners only exist on elements that were initially created
+	Need to use on("click") to fix this
+		Specify type of new element
+
+		$("li").click(function(){
+			$(this).toggleClass("done");
+		});
+
+		turns to:
+
+		// When an li is clicked inside of a ul
+		$("ul").on("click", "li", function(){
+			$(this).toggleClass("done");
+		});
+
+css box-sizing
+
+	border-box
+
+		width and heigh include padding but not margin
+		NOTE: must also use webkit for other browsers
+
+
+CSS organization
+
+	Order by specificity
+		Least specific first
