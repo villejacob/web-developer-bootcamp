@@ -1,0 +1,35 @@
+Section 21
+
+Command Line 
+
+Navigation
+
+	ls
+		shows contents of current folder
+
+	cd directoryName
+		open directory by name
+
+	cd ..
+		go to parent folder
+
+
+Add files/folders
+
+	touch fileName.extension
+		make a new file
+
+	mkdir directoryName
+		make a new folder
+
+
+Remove
+
+	rm fileName.extension
+		remove file
+
+	rm -rf directoryName
+		remove entire directory and children folders/files
+		-rf is the modifier, called a "flag" 
+			"recursive force"
+		NOTE: if used on root directory, delete everything ever
