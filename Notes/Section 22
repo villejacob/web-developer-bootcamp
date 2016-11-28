@@ -1,0 +1,38 @@
+Section 22
+
+
+Node: Lets us run javascript server side
+
+
+Node Console
+
+	Run in terminal using command "node"
+	Can run javascript from the command line
+	NOTE: cannot run alert because it is not in the browser
+
+	Run a file with node using the command line
+
+		node <fileName>
+
+	Or even with ruby
+
+		ruby <filename>
+
+
+NPM
+
+	package manager for javascript
+	similar to pip but for js
+
+	npm install <package name>
+
+	In .js file
+
+		// "cat-me" is the package installed
+		var something = require("cat-me")
+
+		This looks for this package, and ensures that it is included from this package, stores in this variable
+
+	The documents will tell you exactly how to run the package and what the commands will be
+
+	
