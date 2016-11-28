@@ -1,0 +1,82 @@
+Section 20
+
+OBJECTIVES
+	1. Review Internet Basics
+	2. Static vs Dynamic Sites
+	3. Stacks/Back End Technologies
+
+
+STATIC vs DYNAMIC
+	
+	Dynamic
+
+		Compiled on the server side, where the server is constructing the web page before sent back as a response
+		Can send back different content every time
+
+	Static
+
+		Same content each time, server doesn't need to do anything but send the original files
+
+
+STACKS
+
+	Backend Language / app
+	server
+	Database
+
+	Example: Reddit's Stack
+
+		Python / Flask
+		nginx
+		postgresql
+
+
+OUR STACK
+
+	Back-end
+		Node JS - Javascript for the backent
+		Express - Framework
+		MongoDB - Database
+
+	Front-end
+		HTML
+		CSS
+		JS
+
+
+Frontend and Backend sequence of events example:
+
+	1. Ask for reddit homepage 	->
+							   		<- 	2. 	Get top posts from DB
+									 	send back to home page
+	3. Browser renders homepage
+	4. User enters "dogs" in
+	   in search and submits	->
+	   								<- 	5. 	Finds all posts in database about "dogs"
+	   								<- 	6. 	Sends back HTML for the search results page
+	7. Browser renders search page
+
+
+
+HTTP REQUESTS IN DEPTH
+
+	Request / Response cycle
+
+	Can make requests from anywhere, independent of browser
+
+	HTTP Verbs - Types of requests
+		Tell the server what we want to do
+
+	URL query: begins after ? name=value & name2=value2 &...
+
+
+BACKEND WORKFLOW
+
+	Starts with serverside JS code
+	Run in terminal
+	Browser to visit url
+
+
+Cloud9: 
+
+	Environment to do E V E R Y T H I N G
