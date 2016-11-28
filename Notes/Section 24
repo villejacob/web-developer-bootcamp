@@ -76,3 +76,66 @@ What about html boilerplate??
 				</body>
 			</html>
 
+
+	Include these in fileName.ejs
+
+		<% include partials/header %>
+		<% include partials/footer %>
+		// but change path to css to: href="/app.css"
+		// tells to look in root directory, not current
+
+
+POST REQUESTS
+
+	app.post("/addfriend", function(req, res){
+
+	});
+
+	To get to this page, use a form on the /friends page
+		<form action="/addfriend" method="POST">
+
+		Getting form data:
+
+			Need to have name in the input type
+			<input type="text" name="newfriend" pla...>
+
+			Need to install body-parser --save
+			then require it
+				var bodyParser = require("body-parser")
+			tell express to use it
+				app.use(bodyParser.urlencoded({extended: true}));
+
+		Then redirect back!
+			res.redirect("/friends");
+
+	Final:
+
+		app.post("/addfriend", function(req, res){
+		    var newFriend = req.body.newfriend;
+		    friends.push(newFriend);
+		    res.redirect("/friends");
+		});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
