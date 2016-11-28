@@ -1,0 +1,137 @@
+Section 23
+
+
+OBJECTIVES
+	1. What is a framework
+	2. What is Express
+
+
+Framework vs library
+	
+	Inversion of control
+
+		Library:
+
+			YOU are in control
+
+			Collection of functionality that you can call
+
+		Framework:
+
+			FRAMEWORK calls you
+			"don't call us, we'll call you"
+
+			Control flow is in the framework, there are predefined white spots that you can fill out with your code
+
+
+Frameworks allow us to focus on content and functionality vs focusing on the bs boilerplate to just make it work
+
+Heavy vs light
+	
+	heavy: Does a lot of it for me
+	light: Lots of empty space I get to do
+
+Express is pretty light
+	Best to start with this to learn more
+
+
+NOTE: Find where this is running by hitting "preview"
+
+
+First Express App:
+
+	// req: request - object with all the information about the request that was made
+	// res: response - information that we will respond with
+	app.get("/", function(req, res){
+		res.send("hey!");
+	});
+
+	// Now I have to tell it to LISTEN for a request
+	// Listen on c9 port and IP
+	app.listen(process.env.PORT, process.env.IP);
+
+	by using console.log(), the content goes to the server console in c9
+
+
+NPM Init and Package.json
+
+	package.json contains metadata for an app
+
+	package.json allows packages to be easily installed from the folder instead of just including all of the packages directly
+		like sending a recipe rather than all ingredients
+
+	--save takes package name and version, then saves it in the package.json
+
+	npm init allows creation of a package.json file
+
+
+ROUTE PARAMETERS
+
+	splat (or '*') route matcher
+		Default page for route that isnt defined/expected
+
+	Does not have to be explicitly stated for every page
+		instead: make it a pattern with variables!
+			indicated with a colon before the name
+			app.get("/r/:subredditName" ...)
+		Note: not a wildcard, only this one field
+			can't do /r/name/another/and/another
+
+	Example:
+
+		app.get("/r/:subredditName", function(req, res){
+			console.log(req.params);
+		});
+		// This will show the variable in json format
+		>> {subredditName: 'whatWasEntered'}
+
+
+ORDER OF ROUTES MATTER
+
+	First route that matches is the ONLY route that will be run, treated like a string of if-else statements
+
+
+EXERCISE: Express basics
+
+	1. Create brand new Express app from scratch
+	2. Create a package.json using 'npm init' and add express as a dependency
+	3. In the main app.js file, add 3 different routes:
+
+	Visiting "/" should print "Hi there, welcome to my assignment!"
+	===================================================
+	Visiting "/speak/pig" should print "The pig says 'Oink'"
+	... for 5 different animals, all in one route
+	===================================================
+	Visiting "/repeat/hello/3" should print "hello hello hello"
+	... last is the number of repeats
+	... hints: 	number is going to be a string initially
+				use loop to build string
+				default page: "Sorry, page not found... What are you doing with your life?"
+
+AFTER:
+
+	Instead of using if statemtents, use a dictionary!
+	var sounds = {
+		pig: "Oink",
+		cow: "Moo",
+		...
+	}
+	var sound = sounds[animal];	
+	cast to lowercase also to ensure it is in dictionary
+
+TIPS:
+	
+	Process:
+
+	1. mkdir appDirectoryName
+	2. npm init
+		- go through these steps
+	3. touch app.js
+	4. npm install express --save
+		- this automatically adds express as a dependency
+	5. TOP:
+		var express = require("express");
+	   	var app = express();
+ 	6. BOTTOM:
+ 		app.listen(process.env.PORT, process.env.IP)
+
