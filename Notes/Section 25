@@ -1,0 +1,67 @@
+Section 25
+
+
+API - Application Programming Interface
+
+JSON and XML
+
+	XML - Extended Markup Language
+
+		Similar to HTML, but does not describe presentation like HTML does
+		Uses Key-value pair
+
+		Example:
+
+			<person>
+				<age>21</age>
+			</person>
+
+
+	JSON - JavaScript Object Notation
+
+		Very similar to JavaScript Object, but always uses strings
+
+		{
+			"person" : {
+				"age": "21",
+				"name": "Travis"
+			}
+		}
+
+
+Making an API request with Node
+
+	error - check for fail
+	response - what they're sending back
+	body - HTML
+
+	var request = require("request");
+	request('http://www.google.com', function(error, response, body){
+	    if(error){
+	        console.log("Something went wrong");
+	        console.log(error);
+	    } else {
+	        if(response.statusCode == 200){
+	        	// Do something with this
+	            console.log(body)
+	        }
+	    }
+	});
+
+
+Getting information from the API response:
+
+	use JSON.parse(body) to turn it into an object
+
+		var parsedData = JSON.parse(body);
+		console.log(parsedData["query"]["results"]["channel"]["astronomy"]["sunset"]);
+
+
+How to get data from the query string
+
+	req.query.name
+
+	to search with this:
+
+		var query = req.query.name
+		var url = "http://omdbapi.com/?s=" + query
