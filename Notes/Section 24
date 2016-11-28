@@ -1,0 +1,78 @@
+Section 24
+
+
+Rendering HTML and Templates
+
+	In res.send("") we can enter html elements
+	OR
+	res.render("home.ejs");
+		MUST be placed in views directory
+		Need to make sure ejs installed
+
+	How to render an HTML file with variables
+
+	EJS - embed javascript
+
+		Variables written as:
+
+			<%= %>
+			Whatever goes between is treated as javascript
+
+		To pass variables to the ejs:
+
+			res.render("love.ejs", {thingVar: thing});
+			//thing on home.ejs, thingVar on love.ejs
+
+
+EJS - conditionals and loops
+
+	<% if(condition){ %>
+		<p>Text<p>
+	<% }) %>
+
+	Types of tags:
+
+		<%= %>
+			Evaluated as HTML
+
+		<% %>
+			Evaluated as logic
+
+
+STYLES
+	
+	can include in-line with <style></style>
+	OR
+	Use link tag and include style in public directory
+		leave href="app.css"
+		don't make it public/app.css
+		Using express: we have to tell express to use the public directory:
+			in app.js, app.use(express.static("public"));
+
+	Can tell express that we will use .ejs extension with:
+		app.set("view engine", "ejs")
+		// No longer have to write extensions
+
+
+What about html boilerplate??
+
+	Use partials! (templates)
+
+	Templates (partials):
+
+		header.ejs
+
+			<!DOCTYPE html>
+			<html>
+				<head>
+					<title>Demo App</title>
+					<link rel="stylesheet" href="app.css">
+				</head>
+			<body>
+
+
+		footer.ejs
+
+				</body>
+			</html>
+

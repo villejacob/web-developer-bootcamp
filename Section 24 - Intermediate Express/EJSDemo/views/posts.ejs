@@ -1,0 +1,10 @@
+<% include partials/header %>
+<h1>The Posts Page</h1>
+
+<!--can also use for loop, but this allows posts.method instead of posts[i].method-->
+<% posts.forEach(function(post){ %>
+    <li>
+        <%= post.title %> - <strong><%= post.author %></strong>
+    </li>
+<% }) %>
+<% include partials/footer %>
