@@ -1,0 +1,114 @@
+Section 38
+
+Deploying
+
+	Run it on a server (not local)
+	Always running
+
+	Make sure your package.json is accurate and includes packages
+
+In Cloud 9:
+
+	heroku
+		login
+
+	git init
+		make sure it is a git repository
+
+	heroku create
+		creates the app with a name
+		added remote to repository
+			we can push code here!
+
+	git push heroku master
+		with errors, they will be sent to your console
+		run 'heroku logs' to view these
+
+	first error:
+		need to give it a start script
+
+	In package.json
+
+		...
+		"scripts": {
+			"test": ... ,
+			"start": "node app.js"
+		},
+		...
+
+
+Deploying an app with a database
+
+	git init
+	git status
+	git add .
+	git commit -m "initial deploy commit"
+	heroku create
+	(include start script in package.json)
+	git add .
+	git commit -m "add start script"
+	git push heroku master
+	!!ERROR!! What about database?
+		NOTE: can run terminal commands on heroku machine
+			heroku run <command>
+			heroku run ls
+			heroku run node_modules (look at packages)
+			etc...
+
+		Use hosted mongo database called mongo lab
+			no longer use "mongodb://localhost/yelp_camp"
+
+		mongolab.com
+			get url
+			mongodb://<dbuser>:<dbpassword>@ds113668.mlab.com:13668/yelpcamp_villejacob
+			create user to connect to the database (developers)
+			change url to include user and password
+			mongodb://villejacob:yelpcamp@ds113668.mlab.com:13668/yelpcamp_villejacob
+
+	in app.js
+		change url: mongoose.connect(" ^ url ")
+
+	git add app.js
+	git commit -m "add mongolab"
+	git push heroku master
+
+
+Having different databases, one for devs one for users
+
+	change to use local version: "mongodb://localhost/yelp_camp"
+
+	if in production use the real one, if me use the other
+	but how??
+
+
+ENVIRONMENT VARIABLES
+
+	example: app.listen(process.env.PORT, process.env.IP)
+		these change based on the environment
+
+	Create environment variable in the command line:
+
+		// In the CLOUD 9 TERMINAL
+		export DATABASEURL=<local url>
+
+	Access in the doc:
+		process.env.DATABASEURL
+
+	Create environment variable in Heroku:
+		-> settings
+		Config Vars:
+			DATABASEURL   mongodb://<dbuser>:<dbpassword>@ds...
+
+	OR
+
+	In command line:
+		heroku config:set DATABASEURL="mongodb://<dbu..."
+
+	NOTE: These are not exposed to users
+		great for API keys, passwords, etc
+
+
+	BACKUP
+		var url = process.env.DATABASEURL || "mongodb://localhost..."
+		mongoose.connect(url);
+
