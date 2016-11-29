@@ -1,0 +1,25 @@
+Section 26
+
+NOTE: Install:
+
+	npm init
+	npm install express ejs --save
+
+
+POST route using same url: "/campgrounds"
+
+	Can do this because it is RESTful
+	But it is a POST request
+
+	Need to install body parser:
+
+		npm install body-parser --save
+		in app.js:
+			var bodyParser = require("body-parser");
+			app.use(bodyParser.urlencoded({extended: true}))
+
+
+Styling:
+	
+	<header></header>
+	Similar to a div, but has relevence
