@@ -1,0 +1,116 @@
+Section 28
+
+Adding Mongoose to YelpCamp
+
+	npm install mongoose --save
+
+	app.js
+
+		Require mongoose:
+
+			var mongoose = require("mongoose");
+			Note: can just incluse these in one var as commas after each.
+
+		Connect mongoose to mongoDB
+
+			mongoose.connect("mongodb://localhost/yelp_camp");
+
+		Create Schema
+
+			var campgroundSchema = new mongoose.Schema({
+			    name: String,
+			    image: String
+			});
+
+		Create model from Schema
+
+			var Campground = mongoose.model("Campground", campgroundSchema);
+
+
+		Create some sample instances
+
+			Campground.create(
+		        {
+		            name: "Yosemite", 
+		            image: "http://img1.sunset.timeinc.net/sites/default/files/styles/1000x1000/public/image/2016/09/main/yosemite-camping.jpg?itok=z-ahQLb1"
+		            
+		        }, function(err, campground){
+		            if(err){
+		                console.log(err);
+		            } else {
+		                console.log("created campground");
+		                console.log(campground);
+		            }
+		        });
+
+		Change campgrounds to access from array to DB
+
+			app.get("/campgrounds", function(req, res){
+			    // Get all campgrounds from DB
+			    Campground.find({}, function(err, allCampgrounds){
+			        if(err){
+			            console.log(err);
+			        } else {
+			            res.render("campgrounds", {campgrounds: allCampgrounds});
+			            
+			        }
+			    });
+			});
+
+		Modify creation step to use model
+
+			app.post("/campgrounds", function(req, res){
+			    // get data from form and add to campgrounds array
+			    var name = req.body.name;
+			    var image = req.body.image;
+			    var newCampground = {name: name, image: image};
+			    // Create a new campground and save to DB
+			    Campground.create(newCampground, function(err, newlyCreated){
+			        if(err){
+			            console.log(err);
+			        } else {
+			            // Redirect back to campgrounds page
+			            res.redirect("/campgrounds");
+			        }
+			    });
+			});
+
+
+RESTful Routes review
+
+	name	url			verb		desc.
+	====================================================
+	INDEX	/dogs		GET 		Display list of all dogs
+	NEW 	/dogs/new 	GET 		Display forms to make new dog
+	CREATE 	/dogs 		POST 		Add new dog to DB
+	SHOW 	/dogs/:id 	GET 		Shows info about one dog
+
+
+
+
+NOTE: delete ALL data
+	
+	show dbs
+	use yelp_camp
+	show collections
+	db.campgrounds.find()
+	db.campgrounds.drop()
+
+
+
+Adding SHOW route
+
+	app.get("/campgrounds/:id", function(req, res){
+	    // Find the campground with the provided ID
+	    Campground.findById(req.params.id, function(err, foundCampground){
+	        if(err){
+	            console.log(err);
+	        } else {
+	            // Render show template with that campground
+	            res.render("show", {campground: foundCampground});
+	        }
+	    });
+	});
+
+	// The req.params.id is listed as campground._id in index.ejs
+
