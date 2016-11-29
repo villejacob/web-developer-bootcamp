@@ -1,0 +1,260 @@
+Section 27
+
+DATABASES
+
+	A collection of information/data
+	Has an interface to access
+
+	SQL - Relational
+
+		Tabular and flat
+		Similar to a spreadsheet
+
+		USERS
+		| id	| name	| age	|
+		=========================
+		| 1		| john	| 34	|
+		-------------------------
+		| 2 	| jacob	| 21	|
+
+		COMMENTS
+		| id	| text				|
+		=============================
+		| 3		| "Mathematical!"	|
+		-----------------------------
+		| 4 	| "Interesting."	|
+
+		MADE_COMMENT
+		| usr_id	| cmt_id	|
+		=========================
+		| 1			| 3 		|
+		-------------------------
+		| 2 		| 4			|
+
+		Schemas described beforehand
+		Relational tables to store id's and values
+		Atomic domains
+
+	
+	NoSQL - Non-Relational
+
+		Does not have to be defined beforehand
+		Contains key-value pairs like JSON
+		Allows nesting of values
+		Much more flexible
+
+		{
+			name: "Ira",
+			age: 23,
+			city: Missoula,
+			comments: [
+				{text: "Come visit Monata"},
+				{text: "Really!"}
+			],
+			favColor: "purple"
+		}
+
+
+MEAN stack:
+
+	Mongo
+	Express
+	Angular
+	Node
+
+
+What I'm using:
+	
+	MEN - 	Mongo
+			Express
+			Node
+
+
+MONGODB
+
+	NoSQL Database
+	Looks like a javascript object
+
+
+
+INSTALLATION
+
+	sudo apt-get install -y mongodb-org
+	mkdir data
+	echo 'mongod --bind_ip=$IP --dbpath=data --nojournal --rest "$@"' > mongod
+	chmod a+x mongod
+
+	Start mongodb by running mongod script on project root:
+		./mongod
+
+	This starts the server!
+	LEAVE IT ALONE, make another tab to work in
+
+	If it stops, just start it again by running ./mongod in the correct folder (parent of mongod)
+
+
+MONGO COMMANDS
+
+	mongod
+		Runs the database
+
+	mongo
+		Opens mongo shell
+
+	help
+		Gives basic commands and features
+
+	show dbs
+		Shows databases, initial are admin and local
+
+	use <db name>
+		If db name does not exist, it will create it
+
+	insert
+
+		db.dogs.insert()
+		db refers to db that I'm on
+
+		db.dogs.insert({name: "Rusty", breed: "Mutt"})
+
+		show collections
+		>> 	dogs
+			system.indexes
+
+	find
+
+		Find all:
+			db.dogs.find()
+			>> { "_id" : ObjectId("583daa2e7beaa6721a8940cf"), "name" : "Rusty", "breed" : "Mutt" }
+
+		Find by name:
+			db.dogs.find({name: "Rusty"})
+
+		Find by breed:
+			db.dogs.find({breed: "Mutt"})
+
+	Update
+
+		Update entire object:
+			db.dogs.update({name: "Lulu"}, {breed: "Labradoodle"})
+			// Does not preserve other fields, now whole object is {breed: "Labradoodle"}
+
+		Update with field (add field)
+			use $set: {new_field: field_value}
+
+			db.dogs.update({name: "Rusty"}, {$set: {name: "Tater", isCute: true}})
+
+	Remove
+
+		db.dogs.remove({breed: "Labradoodle"})
+
+		Limit how many to remove:
+			// Will only remove 2
+			// Default remove all that match
+			db.dogs.remove({breed: "Mutt"}).limit(2)
+
+
+NOTE: SHUTTING DOWN MONGO
+
+	Shut down server when done working
+	ctrl + c
+
+	If left running and crashes, repair with:
+
+		cd ~
+		./mongod --repair
+
+		if still having trouble:
+
+			--repairpath <path>
+
+
+CRUD
+
+	Create
+	Read
+	Update
+	Destroy
+
+
+Using Mongo with javascript
+
+	Mongoose:
+
+		ODM - Object Data Mapper
+		mongodb object modelling for node.js
+
+		Make a file:
+			cats.js
+			require mongoose
+
+		install mongoose:
+			npm install mongoose
+
+		Connect mongoose to mongodb
+			in cat.js:
+				mongoose.connect("mongodb://localhost/cat_app");
+			test by running node cats.js
+
+		Define schema (not really a schema):
+			defines PATTERN of data
+			can still add to this
+
+			// DO NOT NEED THIS
+			var catSchema = new mongoose.Schema({
+			    name: String,
+			    age: Number,
+			    mood: String
+			});
+
+		Define model:
+			// Cat is name of singular version of the model
+			// Conventional to name with caps
+			var Cat = mongoose.model("Cat", catSchema);
+
+
+		Add an instance of Cat to the DB
+			var george = new Cat({
+			    name: "George",
+			    age: 11,
+			    mood: "Grouchy"
+			});
+
+			// Use callback function to check if it worked instead of blindly saving to it
+			george.save(function(err, cat){
+			    if(err){
+			        console.log("Something went wrong");
+			    } else {
+			        console.log(cat + "saved to the database");
+			    }
+			});
+
+			Note: 	george is our object
+					cat is returned from database
+
+		Retrieve all cats from the DB
+
+			// Pass in empty search paramater (object) because we want all cats
+			Cat.find({}, function(err, cats){
+			    if(err){
+			        console.log(err);
+			    } else {
+			        console.log(cats);
+			    }
+			});
+
+		Create: a Better way to add an instance of cat
+
+			// New and save all at once
+			Cat.create({
+			    name: "Sparkles",
+			    age: 12,
+			    mood: "Sassy"
+			}, function(err, cat){
+			    if(err){
+			        console.log(err);
+			    } else {
+			        console.log(cat);
+			    }
+			});
+
